@@ -10,9 +10,16 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    
+    @IBOutlet weak var loginField: UITextField!
+    @IBOutlet weak var passwordField: UITextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
+        assignBackground()
+        loginField.layer.sublayerTransform = CATransform3DMakeTranslation(15, 0, 0);
+        passwordField.layer.sublayerTransform = CATransform3DMakeTranslation(15, 0, 0);
     }
 
     override func didReceiveMemoryWarning() {
@@ -20,6 +27,12 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
-
+    func assignBackground() {
+        let backgroundImage = UIImageView(frame: UIScreen.main.bounds)
+        backgroundImage.image = UIImage(named: "backgroundProteins")
+        backgroundImage.contentMode =  UIViewContentMode.scaleAspectFill
+        self.view.insertSubview(backgroundImage, at: 0)
+    }
+    
 }
 
