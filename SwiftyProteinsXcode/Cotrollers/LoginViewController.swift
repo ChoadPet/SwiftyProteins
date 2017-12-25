@@ -23,16 +23,17 @@ class LoginViewController: UIViewController {
     
     var request = Request(key: "7b4ed9f58d3b68edbe9c2cdbb914a36c3e7525b956e0cf7aa4c17c352aec8e46", secret: "dfbddf3ccc673a7c69e51c347045f32b847e99e9888d6c172b989bfcd637ae60")
     var device = Device()
+    var file = File()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         showLoadingView()
         
+        squareForFields.layer.cornerRadius = 10
         warningLbl.isHidden = true
         request.basicRequest()
         hiddingLoadingScreen()
-        loginButton.backgroundColor = UIColor(red:0.72, green:0.85, blue:1.00, alpha:1.0)
         
         if device.isEnableID() {
             touchButton.setImage(UIImage(named: "fingerprint"), for: .normal)
@@ -65,16 +66,17 @@ class LoginViewController: UIViewController {
             warningLbl.isHidden = true
             print("Looking for: [\(loginField.text!)] user")
             if let token = self.request.token {
-                self.request.getUser(by: token, with: loginField.text!, completion: { (response, error) in // Call get func for getting student data
+                self.request.getUser(by: token, with: loginField.text!, completion: { (response, error) in
                     if let error = error {
                         print(error.localizedDescription)
                     }
                     if let response = response {
                         if !response.isEmpty {
+                            self.file.readFrom()
                             DispatchQueue.main.async {
                                 self.loginField.text = ""
                                 self.passwordField.text = ""
-                                self.performSegue(withIdentifier: "loginSegue", sender: self)
+                                self.performSegue(withIdentifier: "toLigandsTable_2", sender: self)
                             }
                         } else {
                             DispatchQueue.main.async {
@@ -89,13 +91,22 @@ class LoginViewController: UIViewController {
     }
     @IBAction func touchAction(_ sender: UIButton) {
         warningLbl.isHidden = true
+        file.readFrom()
         touchIDCall()
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toLigandsTable_1" || segue.identifier == "toLigandsTable_2" {
+            if let vc = segue.destination as? LigandsTableViewController {
+                vc.listOfLigands = file.ligands
+            }
+        }
     }
     
     func displayPopup() {
         let alert = UIAlertController(title: "Wrong username!", message: "Type valid username for intra42.", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Default action"), style: .`default`, handler: { _ in
-            NSLog("The \"OK\" alert occured.")
+            print("The \"OK\" alert occured.")
         }))
         self.present(alert, animated: true, completion: nil)
     }
@@ -105,7 +116,7 @@ class LoginViewController: UIViewController {
         authContex.evaluatePolicy(.deviceOwnerAuthentication, localizedReason: "Need your fucking finger", reply: { (success, error) in
             if success {
                 DispatchQueue.main.async {
-                    self.performSegue(withIdentifier: "listOfView", sender: self)
+                    self.performSegue(withIdentifier: "toLigandsTable_1", sender: self)
                 }
             } else {
                 print("Another finger please!")

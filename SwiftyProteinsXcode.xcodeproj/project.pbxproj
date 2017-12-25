@@ -13,6 +13,10 @@
 		1DABF2C81FE6E38A0064F1A5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1DABF2C71FE6E38A0064F1A5 /* Assets.xcassets */; };
 		1DABF2CB1FE6E38A0064F1A5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1DABF2C91FE6E38A0064F1A5 /* LaunchScreen.storyboard */; };
 		2988B1E51FF12512003F73BB /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2988B1E41FF12512003F73BB /* Request.swift */; };
+		2988B1E71FF1472D003F73BB /* ligands.txt in Resources */ = {isa = PBXBuildFile; fileRef = 2988B1E61FF1472D003F73BB /* ligands.txt */; };
+		2988B1E91FF1482D003F73BB /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2988B1E81FF1482D003F73BB /* File.swift */; };
+		2988B1EB1FF14D1D003F73BB /* LigandsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2988B1EA1FF14D1D003F73BB /* LigandsTableViewController.swift */; };
+		2988B1ED1FF1582A003F73BB /* LigandTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2988B1EC1FF1582A003F73BB /* LigandTableViewCell.swift */; };
 		29F421401FF0F8D2004C589E /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29F4213F1FF0F8D2004C589E /* Device.swift */; };
 /* End PBXBuildFile section */
 
@@ -25,6 +29,10 @@
 		1DABF2CA1FE6E38A0064F1A5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1DABF2CC1FE6E38A0064F1A5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2988B1E41FF12512003F73BB /* Request.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
+		2988B1E61FF1472D003F73BB /* ligands.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ligands.txt; sourceTree = "<group>"; };
+		2988B1E81FF1482D003F73BB /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
+		2988B1EA1FF14D1D003F73BB /* LigandsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LigandsTableViewController.swift; sourceTree = "<group>"; };
+		2988B1EC1FF1582A003F73BB /* LigandTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LigandTableViewCell.swift; sourceTree = "<group>"; };
 		29F4213F1FF0F8D2004C589E /* Device.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Device.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -63,6 +71,7 @@
 				1DABF2C41FE6E38A0064F1A5 /* Main.storyboard */,
 				1DABF2C71FE6E38A0064F1A5 /* Assets.xcassets */,
 				1DABF2C91FE6E38A0064F1A5 /* LaunchScreen.storyboard */,
+				2988B1E61FF1472D003F73BB /* ligands.txt */,
 				1DABF2CC1FE6E38A0064F1A5 /* Info.plist */,
 			);
 			path = SwiftyProteinsXcode;
@@ -73,6 +82,7 @@
 			children = (
 				29F4213F1FF0F8D2004C589E /* Device.swift */,
 				2988B1E41FF12512003F73BB /* Request.swift */,
+				2988B1E81FF1482D003F73BB /* File.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -82,6 +92,8 @@
 			children = (
 				1DABF2C01FE6E38A0064F1A5 /* AppDelegate.swift */,
 				1DABF2C21FE6E38A0064F1A5 /* LoginViewController.swift */,
+				2988B1EA1FF14D1D003F73BB /* LigandsTableViewController.swift */,
+				2988B1EC1FF1582A003F73BB /* LigandTableViewCell.swift */,
 			);
 			path = Cotrollers;
 			sourceTree = "<group>";
@@ -147,6 +159,7 @@
 				1DABF2CB1FE6E38A0064F1A5 /* LaunchScreen.storyboard in Resources */,
 				1DABF2C81FE6E38A0064F1A5 /* Assets.xcassets in Resources */,
 				1DABF2C61FE6E38A0064F1A5 /* Main.storyboard in Resources */,
+				2988B1E71FF1472D003F73BB /* ligands.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -157,9 +170,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2988B1E91FF1482D003F73BB /* File.swift in Sources */,
 				29F421401FF0F8D2004C589E /* Device.swift in Sources */,
 				2988B1E51FF12512003F73BB /* Request.swift in Sources */,
+				2988B1ED1FF1582A003F73BB /* LigandTableViewCell.swift in Sources */,
 				1DABF2C31FE6E38A0064F1A5 /* LoginViewController.swift in Sources */,
+				2988B1EB1FF14D1D003F73BB /* LigandsTableViewController.swift in Sources */,
 				1DABF2C11FE6E38A0064F1A5 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
