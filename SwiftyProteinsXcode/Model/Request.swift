@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Alamofire
 
 class Request {
     var key: String
@@ -64,5 +65,6 @@ class Request {
         }
         task.resume()
     }
+    
     
 }

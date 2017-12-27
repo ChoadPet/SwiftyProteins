@@ -9,10 +9,8 @@
 import UIKit
 
 class LigandTableViewCell: UITableViewCell {
-
-    @IBOutlet weak var ligandLbl: UILabel!
-    
-    func setLigandName (ligand: String) {
-        ligandLbl.text = ligand
-    }
+//
+//    func setLigandName (ligand: String) {
+//        ligandLbl.text = ligand
+//    }
 }

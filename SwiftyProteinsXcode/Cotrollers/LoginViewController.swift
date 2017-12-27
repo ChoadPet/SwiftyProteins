@@ -98,7 +98,7 @@ class LoginViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toLigandsTable_1" || segue.identifier == "toLigandsTable_2" {
             if let vc = segue.destination as? LigandsTableViewController {
-                vc.listOfLigands = file.ligands
+                vc.ligands = file.ligands
             }
         }
     }
