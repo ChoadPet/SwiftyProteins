@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Alamofire
 
 class LigandsTableViewController: UITableViewController, UISearchBarDelegate {
     
@@ -66,10 +67,11 @@ class LigandsTableViewController: UITableViewController, UISearchBarDelegate {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        let name = filteredLigands[indexPath.row]
-//        let url = URL(string: "http://files.rcsb.org/ligands/view/\(name).cif") // ulr for ligand INFO
-//        let url = URL(string: "https://files.rcsb.org/ligands/download/\(name)_ideal.pdb") // URL for downloading info about ATOM and CONNECTION
-    
+        let request = Request()
+        let name = filteredLigands[indexPath.row]
+        
+        request.downloadLigandPDB(withName: name)
+        request.downloadLigandCIF(withName: name)
     }
 }
 

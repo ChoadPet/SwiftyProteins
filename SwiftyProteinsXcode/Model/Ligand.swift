@@ -15,6 +15,8 @@ struct Coordinate {
 }
 
 struct Ligand {
+    var PDBInfo: String?
+    var CIFInfo: String?
     var id: String?
     var type: String?
     var name: String?
