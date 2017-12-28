@@ -8,6 +8,14 @@
 
 import Foundation
 
+
+/*
+ FOR ATOM NUMBER - ATOM\s\d{1,3}\s
+ FOR ATOM CONNECTION - CONECT\s\d{1,3}\s
+ 
+ 
+ */
+
 struct Coordinate {
     var x = 0.0
     var y = 0.0
@@ -16,12 +24,26 @@ struct Coordinate {
 
 class Ligand {
     var PDBInfo: String?
-    var CIFInfo: String?
-    var id: String?
-    var type: String?
     var name: String?
-    var formula: String?
-    var weight: Float?
     
-    var coordinates = Coordinate()
+    //Info about element or atom or whatever
+    var atomID = Int()
+    var atomConnection = [Int]()
+    var atomName = String()
+    var atomCcoordinates = Coordinate()
+    
+    func removeSpaces(_ str: String) -> [String] {
+        let str = str
+            .components(separatedBy: " ")
+            .filter { !$0.isEmpty }
+            .joined(separator: " ")
+        
+        let array = str.components(separatedBy: .newlines)
+        return array
+    }
+    
+    func getAtomId(inStr str: String) {
+        
+        let regex = try! NSRegularExpression(pattern: <#T##String#>, options: <#T##NSRegularExpression.Options#>)
+    }
 }

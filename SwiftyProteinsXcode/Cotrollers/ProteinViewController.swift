@@ -10,6 +10,7 @@ import UIKit
 
 class ProteinViewController: UIViewController {
     
+    
     @IBOutlet weak var nameLbl: UILabel!
     var ligandModel = Ligand()
     
@@ -17,7 +18,12 @@ class ProteinViewController: UIViewController {
         super.viewDidLoad()
 
         nameLbl.text = ligandModel.name
-        nameLbl.textColor = UIColor.green
+        if let info = ligandModel.PDBInfo {
+            let freshArray = ligandModel.removeSpaces(info)
+            for element in freshArray {
+                print(element)
+            }
+        }
     }
 
 }
