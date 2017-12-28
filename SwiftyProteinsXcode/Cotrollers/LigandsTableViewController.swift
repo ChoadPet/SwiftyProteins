@@ -13,6 +13,8 @@ class LigandsTableViewController: UITableViewController, UISearchBarDelegate {
     
     var ligands = [String]()
     var filteredLigands = [String]()
+    var ligand = Ligand()
+    
     @IBOutlet weak var searchBar: UISearchBar!
     //    @IBOutlet weak var ligandName: UILabel!
     
@@ -70,8 +72,47 @@ class LigandsTableViewController: UITableViewController, UISearchBarDelegate {
         let request = Request()
         let name = filteredLigands[indexPath.row]
         
-        request.downloadLigandPDB(withName: name)
-        request.downloadLigandCIF(withName: name)
+        ligand.name = name
+        UIApplication.shared.isNetworkActivityIndicatorVisible = true
+        request.downloadLigandPDB(withName: name) { (data, error) in
+            if error {
+                UIApplication.shared.isNetworkActivityIndicatorVisible = false
+                self.displayPopup()
+            } else {
+                self.ligand.PDBInfo = data
+                DispatchQueue.main.async {
+                    UIApplication.shared.isNetworkActivityIndicatorVisible = false
+                    self.performSegue(withIdentifier: "toProteinViewController", sender: self)
+                }
+            }
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toProteinViewController" {
+            if let vcProtein = segue.destination as? ProteinViewController {
+                vcProtein.ligandModel = ligand
+            }
+        }
+    }
+    
+    func displayPopup() {
+        let alert = UIAlertController(title: "Can't download ligand", message: "Another one please", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Default action"), style: .`default`, handler: { _ in
+            print("The \"OK\" alert occured.")
+        }))
+        self.present(alert, animated: true, completion: nil)
     }
 }
+
+
+
+
+
+
+
+
+
+
+
 

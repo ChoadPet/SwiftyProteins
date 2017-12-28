@@ -72,60 +72,60 @@ class Request {
         task.resume()
     }
     
-    public func downloadLigandPDB(withName name: String) {
-        var ligand = Ligand()
-        let urlString = URL(string: "https://files.rcsb.org/ligands/download/\(name)_model.pdb") // URL for downloading info about ATOM and CONNECTION
+    public func downloadLigandPDB(withName name: String, completion: @escaping (String?, Bool) -> Void) {
+        let urlString = URL(string: "https://files.rcsb.org/ligands/download/\(name.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)!)_model.pdb") // URL for downloading info about ATOM and CONNECTION
         let destination: DownloadRequest.DownloadFileDestination = { _, _ in
             let documentsURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
             let fileURL = documentsURL.appendingPathComponent("\(name).pdb")
             return (fileURL, [.removePreviousFile, .createIntermediateDirectories])
         }
-        
-        Alamofire.download(urlString!, to: destination).response { response in
-            
-            if response.error == nil {
-                if let url = response.destinationURL?.path {
-                    do {
-                        let data = try String(contentsOfFile: url)
-                        ligand.PDBInfo = data
-                        if data.range(of: "<title>404 Not Found</title>") != nil {
-                            print("Can't download message")
+        if let url = urlString {
+            Alamofire.download(url, to: destination).response { response in
+                if response.error == nil {
+                    if let url = response.destinationURL?.path {
+                        do {
+                            let data = try String(contentsOfFile: url)
+                            if data.range(of: "<title>404 Not Found</title>") != nil {
+                                completion(nil, true)
+                            } else {
+                                completion(data, false)
+                            }
+                        } catch {
+                            print("Oops Huston we have a problem!")
                         }
-                        print(ligand.PDBInfo!)
-                    } catch {
-                        print("Can't download")
                     }
                 }
             }
         }
     }
     
-    public func downloadLigandCIF(withName name: String) {
-        var ligand = Ligand()
-        let urlString = URL(string: "http://files.rcsb.org/ligands/view/\(name).cif") // ulr for ligand INFO
-        let destination: DownloadRequest.DownloadFileDestination = { _, _ in
-            let documentsURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
-            let fileURL = documentsURL.appendingPathComponent("\(name).pdb")
-            return (fileURL, [.removePreviousFile, .createIntermediateDirectories])
-        }
-        
-        Alamofire.download(urlString!, to: destination).response { response in
-            
-            if response.error == nil {
-                if let url = response.destinationURL?.path {
-                    do {
-                        let data = try String(contentsOfFile: url)
-                        ligand.CIFInfo = data
-                        if data.range(of: "<title>404 Not Found</title>") != nil {
-                            print("Can't download message")
-                        }
-                        print(ligand.CIFInfo!)
-                    } catch {
-                        print("Can't download")
-                    }
-                }
-            }
-        }
-    }
+    //    public func downloadLigandCIF(withName name: String, completion: @escaping (String?, Bool) -> Void) {
+    //        let urlString = URL(string: "http://files.rcsb.org/ligands/view/\(name).cif") // ulr for ligand INFO
+    //        let destination: DownloadRequest.DownloadFileDestination = { _, _ in
+    //            let documentsURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
+    //            let fileURL = documentsURL.appendingPathComponent("\(name).pdb")
+    //            return (fileURL, [.removePreviousFile, .createIntermediateDirectories])
+    //        }
+    //
+    //        Alamofire.download(urlString!, to: destination).response { response in
+    //
+    //            if response.error == nil {
+    //                if let url = response.destinationURL?.path {
+    //                    do {
+    //                        let data = try String(contentsOfFile: url)
+    //                        if data.range(of: "<title>404 Not Found</title>") != nil {
+    //                            completion(nil, true)
+    //                            print("Can't download message")
+    //                        } else {
+    //                            completion(data, false)
+    //                        }
+    //                    } catch {
+    //                        print("Can't download")
+    //                    }
+    //                }
+    //            }
+    //        }
+    //
+    //    }
     
 }

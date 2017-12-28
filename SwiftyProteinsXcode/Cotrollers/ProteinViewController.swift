@@ -9,15 +9,16 @@
 import UIKit
 
 class ProteinViewController: UIViewController {
-
-    @IBOutlet weak var proteinLbl: UILabel!
     
-    var ligandName: String!
+    @IBOutlet weak var nameLbl: UILabel!
+    var ligandModel = Ligand()
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        
+        nameLbl.text = ligandModel.name
+        nameLbl.textColor = UIColor.green
     }
 
 }
+

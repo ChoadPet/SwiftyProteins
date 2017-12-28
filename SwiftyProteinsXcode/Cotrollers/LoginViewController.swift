@@ -113,7 +113,7 @@ class LoginViewController: UIViewController {
     
     func touchIDCall() {
         let authContex = LAContext()
-        authContex.evaluatePolicy(.deviceOwnerAuthentication, localizedReason: "Need your fucking finger", reply: { (success, error) in
+        authContex.evaluatePolicy(.deviceOwnerAuthentication, localizedReason: "To Log in", reply: { (success, error) in
             if success {
                 DispatchQueue.main.async {
                     self.performSegue(withIdentifier: "toLigandsTable_1", sender: self)
