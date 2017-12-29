@@ -52,6 +52,7 @@ class Request {
         }
     }
     
+    //TODO: - Katya make spinning wheel on first screen as well! When i press login button :)
     public func getUser(by access_token: String, with user: String, completion: @escaping ([String: Any]?, Error?) -> Void) {
         let url = URL(string: "https://api.intra.42.fr/v2/users/\(user.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)!)?access_token=\(access_token)")
         let request = URLRequest(url: url! as URL)

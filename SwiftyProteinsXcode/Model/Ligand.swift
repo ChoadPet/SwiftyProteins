@@ -42,8 +42,19 @@ class Ligand {
         return array
     }
     
-    func getAtomId(inStr str: String) {
+    func parsePDB(with pattern: String, forLine line: String, atIndex index: Int) -> String? {
+        var result: String?
+        let newLine = line as NSString
         
-        let regex = try! NSRegularExpression(pattern: <#T##String#>, options: <#T##NSRegularExpression.Options#>)
+        let regex = try! NSRegularExpression(pattern: pattern, options: [])
+        let matches = regex.matches(in: line, options: [], range: NSRange(location: 0, length: line.characters.count))
+        let resultMatch = matches.map({ (line) in
+            newLine.substring(with: line.range)
+        })
+        if !resultMatch.isEmpty {
+            result = resultMatch[index]
+        }
+        return result
     }
+    
 }
