@@ -1,25 +1,37 @@
-//
-//  Ligand.swift
-//  SwiftyProteinsXcode
-//
-//  Created by Vetaliy Poltavets on 12/26/17.
-//  Copyright © 2017 Vitalii Poltavets. All rights reserved.
-//
 
 import Foundation
 
-
-/*
- FOR ATOM NUMBER - ATOM\s\d{1,3}\s
- FOR ATOM CONNECTION - CONECT\s\d{1,3}\s
- 
- 
- */
+enum Type: String {
+    case H = "white"
+    case C = "black"
+    case N = "dark blue"
+    case O = "red"
+    case BR = "dark red"
+    case FE = "dark orange"
+    case I = "dark voilet"
+    case P = "orange"
+    case S = "yellow"
+    case B = "salmon"
+    case TI = "gray"
+    case F, CL = "green"
+    case HE, NE, AR, XE, KR = "cyan"
+    case BE, MG, CA, SR, BA, RA = "dark green"
+    
+    case Other = "pink"
+}
 
 struct Coordinate {
-    var x = 0.0
-    var y = 0.0
-    var z = 0.0
+    var x: Float = 0.0
+    var y: Float = 0.0
+    var z: Float = 0.0
+}
+
+struct Atom {
+    //Info about element or atom or whatever
+    var id = Int()
+    var name = String()
+    var coordinates = Coordinate()
+    var connection = [Int]()
 }
 
 class Ligand {
@@ -27,10 +39,7 @@ class Ligand {
     var name: String?
     
     //Info about element or atom or whatever
-    var atomID = Int()
-    var atomConnection = [Int]()
-    var atomName = String()
-    var atomCcoordinates = Coordinate()
+    var atoms = [Atom]()
     
     func removeSpaces(_ str: String) -> [String] {
         let str = str
@@ -46,15 +55,20 @@ class Ligand {
         var result: String?
         let newLine = line as NSString
         
-        let regex = try! NSRegularExpression(pattern: pattern, options: [])
-        let matches = regex.matches(in: line, options: [], range: NSRange(location: 0, length: line.characters.count))
-        let resultMatch = matches.map({ (line) in
-            newLine.substring(with: line.range)
-        })
-        if !resultMatch.isEmpty {
-            result = resultMatch[index]
+        do {
+            let regex = try NSRegularExpression(pattern: pattern, options: [])
+            let matches = regex.matches(in: line, options: [], range: NSRange(location: 0, length: line.count))
+            let resultMatch = matches.map({ (line) in
+                newLine.substring(with: line.range)
+            })
+            if !resultMatch.isEmpty {
+                result = resultMatch[index]
+            }
+            return result
+        } catch let error {
+            print("invalid regex: \(error.localizedDescription)")
+            return "error"
         }
-        return result
     }
     
 }
