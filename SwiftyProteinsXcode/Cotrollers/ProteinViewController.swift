@@ -51,8 +51,11 @@ class ProteinViewController: UIViewController {
                 ligandModel.atoms.append(atom)
             } else if line.range(of: "CONECT") != nil {
                 
+                let con = ligandModel.parseConnection(with: Pattern.conections.rawValue, forLine: line)
                 for atom in ligandModel.atoms {
-                    
+                    if atom.id == con[0] {
+                        print(con[0])
+                    }
                 }
             }
         }

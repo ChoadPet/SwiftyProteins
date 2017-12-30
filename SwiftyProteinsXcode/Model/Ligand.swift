@@ -56,8 +56,8 @@ class Ligand {
         let newLine = line as NSString
         
         do {
-            let regex = try NSRegularExpression(pattern: pattern, options: [])
-            let matches = regex.matches(in: line, options: [], range: NSRange(location: 0, length: line.count))
+            let regex = try NSRegularExpression(pattern: pattern)
+            let matches = regex.matches(in: line, range: NSRange(location: 0, length: line.count))
             let resultMatch = matches.map({ (line) in
                 newLine.substring(with: line.range)
             })
@@ -68,6 +68,23 @@ class Ligand {
         } catch let error {
             print("invalid regex: \(error.localizedDescription)")
             return "error"
+        }
+    }
+    
+    func parseConnection(with regex: String, forLine line: String) -> [Int] {
+        
+        do {
+            let i = 0
+            let regex = try NSRegularExpression(pattern: regex)
+            let count = regex.matches(in: line, range: NSRange(line.startIndex..., in: line)).count
+            let matches = regex.matches(in: line, range: NSRange(line.startIndex..., in: line))
+            while i < count {
+                return matches.map { Int(line[Range($0.range, in: line)!])! }
+            }
+            return []
+        } catch let error {
+            print("error: \(error.localizedDescription)")
+            return []
         }
     }
     
