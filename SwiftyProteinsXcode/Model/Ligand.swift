@@ -20,6 +20,13 @@ enum Type: String {
     case Other = "pink"
 }
 
+enum Pattern: String {
+    case id = "\\d{1,3}"
+    case coordinate = "-?\\d{1,3}[.]\\d{3}"
+    case name = "\\w+$"
+    case conections = "\\d+"
+}
+
 struct Coordinate {
     var x: Float = 0.0
     var y: Float = 0.0
@@ -27,21 +34,46 @@ struct Coordinate {
 }
 
 struct Atom {
-    //Info about element or atom or whatever
     var id = Int()
     var name = String()
     var coordinates = Coordinate()
-    var connection = [Int]()
 }
 
-class Ligand {
+final class Ligand {
     var PDBInfo: String?
     var name: String?
-    
-    //Info about element or atom or whatever
     var atoms = [Atom]()
+    var connections = [[Int]]()
     
-    func removeSpaces(_ str: String) -> [String] {
+    //MARK: - Public interface
+    
+    public func parseAtomAndConnections() {
+        var pdbInfo = [String]()
+        var atom = Atom()
+        
+        if let info = PDBInfo {
+            pdbInfo = removeSpaces(info)
+        }
+        for line in pdbInfo {
+            if line.range(of: "ATOM") != nil {
+                atom.id = Int(parsePDB(with: Pattern.id.rawValue, forLine: line, atIndex: 0))!
+                atom.name = parsePDB(with: Pattern.name.rawValue, forLine: line, atIndex: 0)
+                atom.coordinates.x = Float(parsePDB(with: Pattern.coordinate.rawValue, forLine: line, atIndex: 0))!
+                atom.coordinates.y = Float(parsePDB(with: Pattern.coordinate.rawValue, forLine: line, atIndex: 1))!
+                atom.coordinates.z = Float(parsePDB(with: Pattern.coordinate.rawValue, forLine: line, atIndex: 2))!
+                atoms.append(atom)
+            } else if line.range(of: "CONECT") != nil {
+                setupConnections(with: Pattern.conections.rawValue, forLine: line)
+            }
+        }
+        //        for atom in atoms {
+        //            print("Atom id: \(atom.id)\nAtom name: \(atom.name)\nAtom coordinates:\tx: [\(atom.coordinates.x)]\ty: [\(atom.coordinates.y)]\tz: [\(atom.coordinates.z)]\n")
+        //        }
+    }
+    
+    //MARK: - Private interface
+    
+    private func removeSpaces(_ str: String) -> [String] {
         let str = str
             .components(separatedBy: " ")
             .filter { !$0.isEmpty }
@@ -51,8 +83,8 @@ class Ligand {
         return array
     }
     
-    func parsePDB(with pattern: String, forLine line: String, atIndex index: Int) -> String? {
-        var result: String?
+    private func parsePDB(with pattern: String, forLine line: String, atIndex index: Int) -> String {
+        var result = String()
         let newLine = line as NSString
         
         do {
@@ -71,20 +103,14 @@ class Ligand {
         }
     }
     
-    func parseConnection(with regex: String, forLine line: String) -> [Int] {
+    private func setupConnections(with regex: String, forLine line: String) {
         
         do {
-            let i = 0
             let regex = try NSRegularExpression(pattern: regex)
-            let count = regex.matches(in: line, range: NSRange(line.startIndex..., in: line)).count
             let matches = regex.matches(in: line, range: NSRange(line.startIndex..., in: line))
-            while i < count {
-                return matches.map { Int(line[Range($0.range, in: line)!])! }
-            }
-            return []
+            self.connections.append(matches.map { Int(line[Range($0.range, in: line)!])! })
         } catch let error {
             print("error: \(error.localizedDescription)")
-            return []
         }
     }
     
