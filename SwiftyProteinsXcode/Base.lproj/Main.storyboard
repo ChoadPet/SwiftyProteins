@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13178.6" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="GAq-Og-Kva">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="GAq-Og-Kva">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13156.2"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -189,6 +189,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <sceneKitView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" loops="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rqy-23-PVZ">
+                                <rect key="frame" x="0.0" y="32" width="375" height="667"/>
+                            </sceneKitView>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="eXs-7R-1rm">
                                 <rect key="frame" x="239" y="80" width="120" height="20.5"/>
                                 <subviews>
@@ -206,9 +209,22 @@
                                     </label>
                                 </subviews>
                             </stackView>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="g07-mL-jFL">
+                                <rect key="frame" x="16" y="619" width="343" height="29"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <segments>
+                                    <segment title="Ball&amp;Stick"/>
+                                    <segment title="Squares"/>
+                                </segments>
+                                <color key="tintColor" red="0.0" green="0.65925977329999996" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="Rqy-23-PVZ" firstAttribute="width" secondItem="4xy-Uf-ZzO" secondAttribute="width" id="741-tS-MMf"/>
+                            <constraint firstItem="Rqy-23-PVZ" firstAttribute="height" secondItem="4xy-Uf-ZzO" secondAttribute="height" id="YMK-Zw-rFl"/>
+                            <constraint firstItem="Rqy-23-PVZ" firstAttribute="centerY" secondItem="vR6-l5-K3C" secondAttribute="centerY" id="b7O-jC-QhJ"/>
+                            <constraint firstItem="Rqy-23-PVZ" firstAttribute="centerX" secondItem="vR6-l5-K3C" secondAttribute="centerX" id="eun-hW-GBA"/>
                             <constraint firstItem="vR6-l5-K3C" firstAttribute="trailing" secondItem="eXs-7R-1rm" secondAttribute="trailing" constant="16" id="iTM-1n-TlZ"/>
                             <constraint firstItem="eXs-7R-1rm" firstAttribute="top" secondItem="vR6-l5-K3C" secondAttribute="top" constant="16" id="lCs-3F-VVe"/>
                         </constraints>
@@ -216,6 +232,7 @@
                     </view>
                     <connections>
                         <outlet property="nameLbl" destination="DZs-w4-v8b" id="nfE-Hy-0U3"/>
+                        <outlet property="sceneView" destination="Rqy-23-PVZ" id="5Ng-ef-8nc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aiw-W6-LFp" userLabel="First Responder" sceneMemberID="firstResponder"/>

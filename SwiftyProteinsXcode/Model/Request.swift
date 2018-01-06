@@ -10,16 +10,16 @@ import Foundation
 import Alamofire
 
 class Request {
-    var key = String()
-    var secret = String()
+//    var key: String?
+//    var secret: String?
     var token: String?
     
-    init(key: String, secret: String) {
-        self.key = key
-        self.secret = secret
-    }
+//    init(key: String, secret: String) {
+//        self.key = key
+//        self.secret = secret
+//    }
     
-    public func basicRequest() {
+    public func basicRequest(withKey key: String, andSecret secret: String) {
         let BEARER = ((key + ":" + secret).data(using: String.Encoding.utf8))!.base64EncodedString(options: NSData.Base64EncodingOptions.init(rawValue: 0))
         let url = URL(string: "https://api.intra.42.fr/oauth/token")
         var request = URLRequest(url: url! as URL)

@@ -21,7 +21,7 @@ class LoginViewController: UIViewController {
     //Appears if device doesn't support Touch ID
     @IBOutlet weak var loginButton: UIButton!
     
-    let request = Request(key: "7b4ed9f58d3b68edbe9c2cdbb914a36c3e7525b956e0cf7aa4c17c352aec8e46", secret: "dfbddf3ccc673a7c69e51c347045f32b847e99e9888d6c172b989bfcd637ae60")
+    let request = Request()
     var device = Device()
     var file = File()
     
@@ -34,7 +34,7 @@ class LoginViewController: UIViewController {
         
         squareForFields.layer.cornerRadius = 10
         warningLbl.isHidden = true
-        request.basicRequest()
+        request.basicRequest(withKey: "7b4ed9f58d3b68edbe9c2cdbb914a36c3e7525b956e0cf7aa4c17c352aec8e46", andSecret: "dfbddf3ccc673a7c69e51c347045f32b847e99e9888d6c172b989bfcd637ae60")
         hiddingLoadingScreen()
         
         if device.isEnableID() {

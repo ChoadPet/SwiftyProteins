@@ -12,6 +12,7 @@
 		1DABF2C61FE6E38A0064F1A5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1DABF2C41FE6E38A0064F1A5 /* Main.storyboard */; };
 		1DABF2C81FE6E38A0064F1A5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1DABF2C71FE6E38A0064F1A5 /* Assets.xcassets */; };
 		1DABF2CB1FE6E38A0064F1A5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1DABF2C91FE6E38A0064F1A5 /* LaunchScreen.storyboard */; };
+		295308792000DCE900FEE036 /* Atom3DModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295308782000DCE900FEE036 /* Atom3DModel.swift */; };
 		2988B1E51FF12512003F73BB /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2988B1E41FF12512003F73BB /* Request.swift */; };
 		2988B1E71FF1472D003F73BB /* ligands.txt in Resources */ = {isa = PBXBuildFile; fileRef = 2988B1E61FF1472D003F73BB /* ligands.txt */; };
 		2988B1E91FF1482D003F73BB /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2988B1E81FF1482D003F73BB /* File.swift */; };
@@ -32,6 +33,7 @@
 		1DABF2C71FE6E38A0064F1A5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1DABF2CA1FE6E38A0064F1A5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1DABF2CC1FE6E38A0064F1A5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		295308782000DCE900FEE036 /* Atom3DModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Atom3DModel.swift; sourceTree = "<group>"; };
 		2988B1E41FF12512003F73BB /* Request.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
 		2988B1E61FF1472D003F73BB /* ligands.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ligands.txt; sourceTree = "<group>"; };
 		2988B1E81FF1482D003F73BB /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
@@ -97,6 +99,7 @@
 				2988B1E41FF12512003F73BB /* Request.swift */,
 				2988B1E81FF1482D003F73BB /* File.swift */,
 				2988B1F01FF23EBF003F73BB /* Ligand.swift */,
+				295308782000DCE900FEE036 /* Atom3DModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -260,6 +263,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				295308792000DCE900FEE036 /* Atom3DModel.swift in Sources */,
 				2988B1E91FF1482D003F73BB /* File.swift in Sources */,
 				29F421401FF0F8D2004C589E /* Device.swift in Sources */,
 				2988B1E51FF12512003F73BB /* Request.swift in Sources */,
