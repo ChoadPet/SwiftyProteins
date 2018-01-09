@@ -20,6 +20,7 @@
 		2988B1EF1FF1A948003F73BB /* ProteinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2988B1EE1FF1A948003F73BB /* ProteinViewController.swift */; };
 		2988B1F11FF23EBF003F73BB /* Ligand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2988B1F01FF23EBF003F73BB /* Ligand.swift */; };
 		2988B1FB1FF3B1E8003F73BB /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2988B1FC1FF3B1E8003F73BB /* Alamofire.framework */; };
+		2998AA5320023176002BBFEF /* Connections.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2998AA5220023176002BBFEF /* Connections.swift */; };
 		29F421401FF0F8D2004C589E /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29F4213F1FF0F8D2004C589E /* Device.swift */; };
 		3A81831F004A0B4B1FE3D593 /* Pods_SwiftyProteinsXcode.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 749B291A39081B3ABDFFC313 /* Pods_SwiftyProteinsXcode.framework */; };
 /* End PBXBuildFile section */
@@ -42,6 +43,7 @@
 		2988B1F01FF23EBF003F73BB /* Ligand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ligand.swift; sourceTree = "<group>"; };
 		2988B1F71FF3B046003F73BB /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2988B1FC1FF3B1E8003F73BB /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2998AA5220023176002BBFEF /* Connections.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Connections.swift; sourceTree = "<group>"; };
 		29F4213F1FF0F8D2004C589E /* Device.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Device.swift; sourceTree = "<group>"; };
 		37073AC063AE1DD844742FB9 /* Pods-SwiftyProteinsXcode.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftyProteinsXcode.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftyProteinsXcode/Pods-SwiftyProteinsXcode.debug.xcconfig"; sourceTree = "<group>"; };
 		749B291A39081B3ABDFFC313 /* Pods_SwiftyProteinsXcode.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwiftyProteinsXcode.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -100,6 +102,7 @@
 				2988B1E81FF1482D003F73BB /* File.swift */,
 				2988B1F01FF23EBF003F73BB /* Ligand.swift */,
 				295308782000DCE900FEE036 /* Atom3DModel.swift */,
+				2998AA5220023176002BBFEF /* Connections.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -270,6 +273,7 @@
 				1DABF2C31FE6E38A0064F1A5 /* LoginViewController.swift in Sources */,
 				2988B1EB1FF14D1D003F73BB /* LigandsTableViewController.swift in Sources */,
 				2988B1F11FF23EBF003F73BB /* Ligand.swift in Sources */,
+				2998AA5320023176002BBFEF /* Connections.swift in Sources */,
 				2988B1EF1FF1A948003F73BB /* ProteinViewController.swift in Sources */,
 				1DABF2C11FE6E38A0064F1A5 /* AppDelegate.swift in Sources */,
 			);

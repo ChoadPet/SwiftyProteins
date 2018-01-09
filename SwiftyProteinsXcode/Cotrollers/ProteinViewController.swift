@@ -18,8 +18,7 @@ class ProteinViewController: UIViewController {
     
     // Geometry
     var geometryNode = SCNNode()
-    //Camera
-    let cameraNode = SCNNode()
+    let scene = SCNScene()
     
     //MARK: - View life cycle
     
@@ -30,39 +29,47 @@ class ProteinViewController: UIViewController {
         
         //Parse and set array of atoms
         ligandModel.atoms = [Atom]()
+        ligandModel.connections = [[Int]]()
         ligandModel.parseAtomAndConnections()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         setupScene()
-        geometryNode = atom3dModel.addAtomToNode(ligandModel.atoms)
+        
+        geometryNode = atom3dModel.addAtoms(ligandModel.atoms)
+//        geometryNode.enumerateChildNodes { (node, stop) in
+//            node.removeFromParentNode()
+//        }
+        for arrayConect in ligandModel.connections {
+            print(arrayConect)
+            for atom in ligandModel.atoms {
+                if atom.id == arrayConect[0] {
+                    let firstAtom = atom
+                    for conect in arrayConect {
+                        if conect != firstAtom.id {
+                            for second in ligandModel.atoms {
+                                if conect == second.id {
+                                    let secondAtom = second
+                                    geometryNode.addChildNode(atom3dModel.addConnections(from: firstAtom, to: secondAtom))
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        
         sceneView.scene?.rootNode.addChildNode(geometryNode)
     }
     
     func setupScene() {
-        let scene = SCNScene()
         
-        let ambientLightNode = SCNNode()
-        ambientLightNode.light = SCNLight()
-        ambientLightNode.light!.type = SCNLight.LightType.ambient
-        ambientLightNode.light!.color = UIColor(white: 0.67, alpha: 1.0)
-        scene.rootNode.addChildNode(ambientLightNode)
-        
-        let omniLightNode = SCNNode()
-        omniLightNode.light = SCNLight()
-        omniLightNode.light!.type = SCNLight.LightType.omni
-        omniLightNode.light!.color = UIColor(white: 0.75, alpha: 1.0)
-        omniLightNode.position = SCNVector3Make(0, 50, 50)
-        scene.rootNode.addChildNode(omniLightNode)
-
-        cameraNode.camera = SCNCamera()
-        cameraNode.position = SCNVector3Make(0, 0, 25)
-        scene.rootNode.addChildNode(cameraNode)
-        
-        // 3
+        sceneView.allowsCameraControl = true
+        sceneView.autoenablesDefaultLighting = true
         sceneView.scene = scene
+        
     }
-
+    
 }
 

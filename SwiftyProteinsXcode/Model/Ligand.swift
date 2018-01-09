@@ -1,25 +1,6 @@
 
 import Foundation
 
-enum Type {
-    case H
-    case C
-    case N
-    case O
-    case BR
-    case FE
-    case I
-    case P
-    case S
-    case B
-    case TI
-    case F, CL
-    case HE, NE, AR, XE, KR
-    case BE, MG, CA, SR, BA, RA
-    
-    case Other
-}
-
 enum Pattern: String {
     case id = "\\d{1,3}"
     case coordinate = "-?\\d{1,3}[.]\\d{3}"
@@ -36,7 +17,6 @@ struct Coordinate {
 struct Atom {
     var id = Int()
     var name = String()
-    var type: Type?
     var coordinates = Coordinate()
 }
 
@@ -67,12 +47,7 @@ final class Ligand {
                 setupConnections(with: Pattern.conections.rawValue, forLine: line)
             }
         }
-//        for atom in atoms {
-//            print("Atom id: \(atom.id)\nAtom name: \(atom.name)\nAtom coordinates:\tx: [\(atom.coordinates.x)]\ty: [\(atom.coordinates.y)]\tz: [\(atom.coordinates.z)]\n")
-//        }
-//        for connection in connections {
-//            print("connection: \(connection)")
-//        }
+
     }
     
     //MARK: - Private interface
@@ -107,15 +82,6 @@ final class Ligand {
         }
     }
     
-//    private func chooseColorName(_ name: String) {
-//        switch Type {
-//        case name == Type.H:
-//            <#code#>
-//        default:
-//            <#code#>
-//        }
-//    }
-    
     private func setupConnections(with regex: String, forLine line: String) {
         
         do {
@@ -127,25 +93,6 @@ final class Ligand {
         }
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
