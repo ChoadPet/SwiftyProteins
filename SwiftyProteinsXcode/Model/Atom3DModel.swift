@@ -18,8 +18,12 @@ final class Atom3DModel {
                   "N": UIColor.cpkLightBlue(),
                   "S": UIColor.cpkYellow(),
                   "PH": UIColor.cpkOrange(),
+                  "I": UIColor.cpkOrange(),
                   "CH": UIColor.cpkGreen(),
                   "BR": UIColor.cpkBrown(),
+                  "Z": UIColor.cpkBrown(),
+                  "CA": UIColor.cpkDarkGrey(),
+                  "MA" : UIColor.cpkDarkGreen(),
                   "Other": UIColor.cpkPink()]
     
     //MARK: - Public API
@@ -27,7 +31,6 @@ final class Atom3DModel {
         let atomNode = SCNNode()
         
         for atom in atoms {
-            print(atom.coordinates.x, atom.coordinates.y, atom.coordinates.z)
             nodeWithAtom(atom: myAtom(atom.name), molecule: atomNode, position:
                 SCNVector3(atom.coordinates.x, atom.coordinates.y, atom.coordinates.z))
         }
@@ -36,11 +39,11 @@ final class Atom3DModel {
     
     public func addConnections(from firstAtom: Atom, to secondAtom: Atom) -> CylinderLine {
         let connectionNode = SCNNode()
-     
-        let cylinder = CylinderLine(parent: connectionNode, v1: SCNVector3(firstAtom.coordinates.x, firstAtom.coordinates.y, firstAtom.coordinates.z), v2: SCNVector3(secondAtom.coordinates.x, secondAtom.coordinates.y, secondAtom.coordinates.z), r: 0.1, segmentCount: 150, color: UIColor.cpkLightGray())
+        let cylinder = CylinderLine(parent: connectionNode, v1: SCNVector3(firstAtom.coordinates.x, firstAtom.coordinates.y, firstAtom.coordinates.z), v2:
+            SCNVector3(secondAtom.coordinates.x, secondAtom.coordinates.y, secondAtom.coordinates.z), r: 0.1, segmentCount: 150, color: UIColor.cpkLightGray())
         return cylinder
-    
-}
+        
+    }
     
     //MARK: - Private API
     
@@ -92,6 +95,12 @@ extension UIColor {
     }
     class func cpkPink() -> UIColor {
         return UIColor(red:1.00, green:0.08, blue:0.58, alpha:1.0)
+    }
+    class func cpkDarkGrey() -> UIColor {
+        return UIColor(red:0.50, green:0.50, blue:0.50, alpha:1.0)
+    }
+    class func cpkDarkGreen() -> UIColor {
+        return UIColor(red:0.16, green:0.50, blue:0.16, alpha:1.0)
     }
 }
 

@@ -13,6 +13,7 @@ class ProteinViewController: UIViewController {
     
     @IBOutlet weak var sceneView: SCNView!
     @IBOutlet weak var nameLbl: UILabel!
+    @IBOutlet weak var atomNameLbl: UILabel!
     
     var ligandModel = Ligand()
     var atom3dModel = Atom3DModel()
@@ -20,6 +21,7 @@ class ProteinViewController: UIViewController {
     // Geometry
     var atomNodes = SCNNode()
     var connectionNodes = SCNNode()
+    var geometryNode = SCNNode()
     let mainScene = SCNScene()
     
     //MARK: - View life cycle
@@ -41,6 +43,7 @@ class ProteinViewController: UIViewController {
         
         atomNodes = atom3dModel.addAtoms(ligandModel.atoms)
         for arrayConect in ligandModel.connections {
+            print(arrayConect)
             for atom in ligandModel.atoms {
                 if atom.id == arrayConect[0] {
                     let firstAtom = atom
@@ -59,22 +62,66 @@ class ProteinViewController: UIViewController {
         }
         sceneView.scene?.rootNode.addChildNode(atomNodes)
         sceneView.scene?.rootNode.addChildNode(connectionNodes)
-
+//                sceneView.scene?.rootNode.runAction(SCNAction.repeatForever(SCNAction.rotateBy(x: 0, y: 3.14, z: 0, duration: 5)))
+        //        connectionNodes.runAction(SCNAction.repeatForever(SCNAction.rotateBy(x: 0, y: 3.14, z: 0, duration: 5)))
     }
+    
+    
     
     func setupScene() {
         
         sceneView.allowsCameraControl = true
         sceneView.autoenablesDefaultLighting = true
         sceneView.scene = mainScene
-//
-//        let cameraNode = SCNNode()
-//
-//        cameraNode.camera = SCNCamera()
-//        cameraNode.position = SCNVector3(x: 0, y: 0, z: 35)
-//        mainScene.rootNode.addChildNode(cameraNode)
-  
+        
+        let cameraNode = SCNNode()
+        cameraNode.camera = SCNCamera()
+        cameraNode.position = SCNVector3(x: 0, y: 0, z: 35)
+        mainScene.rootNode.addChildNode(cameraNode)
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(ProteinViewController.handleTab(recognize:)))
+        sceneView.addGestureRecognizer(tap)
+        
+    }
+    
+    @objc func handleTab(recognize: UITapGestureRecognizer) {
+        if recognize.state == .ended {
+            let location = recognize.location(in: sceneView)
+            let hits = self.sceneView.hitTest(location, options: nil)
+            if !hits.isEmpty {
+                if let tappedNode = hits.first?.node {
+                    for atom in ligandModel.atoms {
+                        if atom.coordinates.x == tappedNode.position.x {
+                            if atom.coordinates.y == tappedNode.position.y {
+                                atomNameLbl.text = atom.name
+                            }
+                        }
+                    }
+                }
+            }
+        }
     }
     
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

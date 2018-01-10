@@ -193,7 +193,7 @@
                                 <rect key="frame" x="0.0" y="32" width="375" height="667"/>
                             </sceneKitView>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="eXs-7R-1rm">
-                                <rect key="frame" x="228" y="80" width="131" height="23"/>
+                                <rect key="frame" x="248.5" y="80" width="110.5" height="23"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ligand ID:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1JL-An-cyL">
                                         <rect key="frame" x="0.0" y="0.0" width="85.5" height="23"/>
@@ -201,9 +201,9 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DZs-w4-v8b">
-                                        <rect key="frame" x="95.5" y="0.0" width="35.5" height="23"/>
-                                        <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="id" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DZs-w4-v8b">
+                                        <rect key="frame" x="95.5" y="0.0" width="15" height="23"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                         <color key="textColor" red="0.0" green="0.65925977329999996" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -218,19 +218,39 @@
                                 </segments>
                                 <color key="tintColor" red="0.0" green="0.65925977329999996" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </segmentedControl>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="7Ib-9R-q9K">
+                                <rect key="frame" x="16" y="80" width="120" height="23"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Atom name:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ykJ-cw-plP">
+                                        <rect key="frame" x="0.0" y="0.0" width="102" height="23"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CTE-8P-3nI">
+                                        <rect key="frame" x="112" y="0.0" width="8" height="23"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                        <color key="textColor" red="0.0" green="0.65925977329999996" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="Rqy-23-PVZ" firstAttribute="width" secondItem="4xy-Uf-ZzO" secondAttribute="width" id="741-tS-MMf"/>
+                            <constraint firstItem="7Ib-9R-q9K" firstAttribute="top" secondItem="vR6-l5-K3C" secondAttribute="top" constant="16" id="L2F-mR-oKF"/>
                             <constraint firstItem="Rqy-23-PVZ" firstAttribute="height" secondItem="4xy-Uf-ZzO" secondAttribute="height" id="YMK-Zw-rFl"/>
                             <constraint firstItem="Rqy-23-PVZ" firstAttribute="centerY" secondItem="vR6-l5-K3C" secondAttribute="centerY" id="b7O-jC-QhJ"/>
                             <constraint firstItem="Rqy-23-PVZ" firstAttribute="centerX" secondItem="vR6-l5-K3C" secondAttribute="centerX" id="eun-hW-GBA"/>
                             <constraint firstItem="vR6-l5-K3C" firstAttribute="trailing" secondItem="eXs-7R-1rm" secondAttribute="trailing" constant="16" id="iTM-1n-TlZ"/>
                             <constraint firstItem="eXs-7R-1rm" firstAttribute="top" secondItem="vR6-l5-K3C" secondAttribute="top" constant="16" id="lCs-3F-VVe"/>
+                            <constraint firstItem="7Ib-9R-q9K" firstAttribute="leading" secondItem="vR6-l5-K3C" secondAttribute="leading" constant="16" id="wIB-Kf-NT3"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="vR6-l5-K3C"/>
                     </view>
                     <connections>
+                        <outlet property="atomNameLbl" destination="CTE-8P-3nI" id="yYX-fl-Hj9"/>
                         <outlet property="nameLbl" destination="DZs-w4-v8b" id="nfE-Hy-0U3"/>
                         <outlet property="sceneView" destination="Rqy-23-PVZ" id="5Ng-ef-8nc"/>
                     </connections>

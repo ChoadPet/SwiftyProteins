@@ -68,7 +68,7 @@ class Request {
     }
     
     public func downloadLigandPDB(withName name: String, completion: @escaping (String?, Bool) -> Void) {
-        let urlString = URL(string: "https://files.rcsb.org/ligands/download/\(name.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)!)_model.pdb") // URL for downloading info about ATOM and CONNECTION
+        let urlString = URL(string: "https://files.rcsb.org/ligands/download/\(name.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)!)_ideal.pdb") // URL for downloading info about ATOM and CONNECTION
         let destination: DownloadRequest.DownloadFileDestination = { _, _ in
             let documentsURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
             let fileURL = documentsURL.appendingPathComponent("\(name).pdb")
