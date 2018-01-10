@@ -13,12 +13,14 @@ class ProteinViewController: UIViewController {
     
     @IBOutlet weak var sceneView: SCNView!
     @IBOutlet weak var nameLbl: UILabel!
+    
     var ligandModel = Ligand()
     var atom3dModel = Atom3DModel()
     
     // Geometry
-    var geometryNode = SCNNode()
-    let scene = SCNScene()
+    var atomNodes = SCNNode()
+    var connectionNodes = SCNNode()
+    let mainScene = SCNScene()
     
     //MARK: - View life cycle
     
@@ -37,12 +39,8 @@ class ProteinViewController: UIViewController {
         super.viewWillAppear(animated)
         setupScene()
         
-        geometryNode = atom3dModel.addAtoms(ligandModel.atoms)
-//        geometryNode.enumerateChildNodes { (node, stop) in
-//            node.removeFromParentNode()
-//        }
+        atomNodes = atom3dModel.addAtoms(ligandModel.atoms)
         for arrayConect in ligandModel.connections {
-            print(arrayConect)
             for atom in ligandModel.atoms {
                 if atom.id == arrayConect[0] {
                     let firstAtom = atom
@@ -51,7 +49,7 @@ class ProteinViewController: UIViewController {
                             for second in ligandModel.atoms {
                                 if conect == second.id {
                                     let secondAtom = second
-                                    geometryNode.addChildNode(atom3dModel.addConnections(from: firstAtom, to: secondAtom))
+                                    connectionNodes.addChildNode(atom3dModel.addConnections(from: firstAtom, to: secondAtom))
                                 }
                             }
                         }
@@ -59,16 +57,23 @@ class ProteinViewController: UIViewController {
                 }
             }
         }
-        
-        sceneView.scene?.rootNode.addChildNode(geometryNode)
+        sceneView.scene?.rootNode.addChildNode(atomNodes)
+        sceneView.scene?.rootNode.addChildNode(connectionNodes)
+
     }
     
     func setupScene() {
         
         sceneView.allowsCameraControl = true
         sceneView.autoenablesDefaultLighting = true
-        sceneView.scene = scene
-        
+        sceneView.scene = mainScene
+//
+//        let cameraNode = SCNNode()
+//
+//        cameraNode.camera = SCNCamera()
+//        cameraNode.position = SCNVector3(x: 0, y: 0, z: 35)
+//        mainScene.rootNode.addChildNode(cameraNode)
+  
     }
     
 }
