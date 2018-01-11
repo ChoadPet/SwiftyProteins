@@ -27,11 +27,11 @@ final class Atom3DModel {
                   "Other": UIColor.cpkPink()]
     
     //MARK: - Public API
-    public func addAtoms(_ atoms: [Atom]) -> SCNNode {
+    public func addAtoms(_ atoms: [Atom], isSquare: Bool) -> SCNNode {
         let atomNode = SCNNode()
         
         for atom in atoms {
-            nodeWithAtom(atom: myAtom(atom.name), molecule: atomNode, position:
+            nodeWithAtom(atom: myAtom(atom.name, isSquare), molecule: atomNode, position:
                 SCNVector3(atom.coordinates.x, atom.coordinates.y, atom.coordinates.z))
         }
         return atomNode
@@ -53,9 +53,13 @@ final class Atom3DModel {
         molecule.addChildNode(node)
     }
     
-    private func myAtom(_ name: String) -> SCNGeometry {
-        let atom = SCNSphere(radius: 0.25)
-        
+    private func myAtom(_ name: String, _ isSquare: Bool) -> SCNGeometry {
+        var atom = SCNGeometry()
+        if isSquare {
+          atom = SCNBox(width: 0.5, height: 0.5, length: 0.5, chamferRadius: 0.05)
+        } else {
+          atom = SCNSphere(radius: 0.25)
+        }
         atom.firstMaterial?.diffuse.contents = colors[name] ?? colors["Other"]
         atom.firstMaterial?.specular.contents = UIColor.white
         return atom

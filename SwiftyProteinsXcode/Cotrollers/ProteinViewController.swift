@@ -21,13 +21,13 @@ class ProteinViewController: UIViewController {
     // Geometry
     var atomNodes = SCNNode()
     var connectionNodes = SCNNode()
-    var geometryNode = SCNNode()
     let mainScene = SCNScene()
     
     //MARK: - View life cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.becomeFirstResponder() // To get shake gesture
         
         nameLbl.text = ligandModel.name
         
@@ -41,7 +41,29 @@ class ProteinViewController: UIViewController {
         super.viewWillAppear(animated)
         setupScene()
         
-        atomNodes = atom3dModel.addAtoms(ligandModel.atoms)
+        atomNodes = atom3dModel.addAtoms(ligandModel.atoms, isSquare: false)
+        connectionAlgorithm()
+        sceneView.scene?.rootNode.addChildNode(atomNodes)
+        sceneView.scene?.rootNode.addChildNode(connectionNodes)
+    }
+    
+    // MARK: - functions
+    
+    // We are willing to become first responder to get shake motion
+    override var canBecomeFirstResponder: Bool {
+        get {
+            return true
+        }
+    }
+    
+    // Enable detection of shake motion
+    override func motionEnded(_ motion: UIEventSubtype, with event: UIEvent?) {
+        if motion == .motionShake {
+            print("Why are you shaking me?")
+        }
+    }
+    
+    func connectionAlgorithm() {
         for arrayConect in ligandModel.connections {
             print(arrayConect)
             for atom in ligandModel.atoms {
@@ -60,13 +82,7 @@ class ProteinViewController: UIViewController {
                 }
             }
         }
-        sceneView.scene?.rootNode.addChildNode(atomNodes)
-        sceneView.scene?.rootNode.addChildNode(connectionNodes)
-//                sceneView.scene?.rootNode.runAction(SCNAction.repeatForever(SCNAction.rotateBy(x: 0, y: 3.14, z: 0, duration: 5)))
-        //        connectionNodes.runAction(SCNAction.repeatForever(SCNAction.rotateBy(x: 0, y: 3.14, z: 0, duration: 5)))
     }
-    
-    
     
     func setupScene() {
         
@@ -84,6 +100,28 @@ class ProteinViewController: UIViewController {
         
     }
     
+    // MARK: - IBActions
+    
+    @IBAction func segmentValueChanged(_ sender: UISegmentedControl) {
+        atomNodes.removeFromParentNode()
+        connectionNodes.removeFromParentNode()
+        
+        switch sender.selectedSegmentIndex {
+        case 0:
+            atomNodes = atom3dModel.addAtoms(ligandModel.atoms, isSquare: false)
+            connectionAlgorithm()
+        case 1:
+            atomNodes = atom3dModel.addAtoms(ligandModel.atoms, isSquare: true)
+            connectionAlgorithm()
+        default:
+            break
+        }
+        sceneView.scene?.rootNode.addChildNode(atomNodes)
+        sceneView.scene?.rootNode.addChildNode(connectionNodes)
+    }
+    
+    // MARK: - GestureRecognizers
+
     @objc func handleTab(recognize: UITapGestureRecognizer) {
         if recognize.state == .ended {
             let location = recognize.location(in: sceneView)

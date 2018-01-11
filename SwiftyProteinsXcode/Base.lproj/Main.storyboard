@@ -26,17 +26,31 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="Cfq-Ms-p0W">
                                         <rect key="frame" x="20" y="38.5" width="280" height="124"/>
                                         <subviews>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username*" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="I4b-d1-0LI">
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username*" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="I4b-d1-0LI" customClass="DesignableTextField" customModule="SwiftyProteinsXcode" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="280" height="30"/>
+                                                <color key="tintColor" red="0.78200346229999995" green="0.55896061659999996" blue="0.54264348750000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" textContentType="nickname"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="leftPadding">
+                                                        <real key="value" value="5"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="image" keyPath="leftImage" value="username"/>
+                                                </userDefinedRuntimeAttributes>
                                             </textField>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5mg-yd-C4R">
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5mg-yd-C4R" customClass="DesignableTextField" customModule="SwiftyProteinsXcode" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="45" width="280" height="30"/>
+                                                <color key="tintColor" red="0.78200346229999995" green="0.55896061659999996" blue="0.54264348750000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="image" keyPath="leftImage" value="password"/>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="leftPadding">
+                                                        <real key="value" value="5"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
                                             </textField>
                                             <button opaque="NO" alpha="0.90000000000000002" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Wm-B5-KQD">
                                                 <rect key="frame" x="0.0" y="90" width="280" height="34"/>
@@ -91,17 +105,26 @@
                                 <color key="textColor" red="1" green="0.088454366371631066" blue="0.11504203466784113" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ⓘ  Username: Your login from intra42" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fQ6-I5-sja">
+                                <rect key="frame" x="27" y="627.5" width="321" height="19.5"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="KeE-OP-7pn" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="4Ox-uH-tTz"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="fQ6-I5-sja" secondAttribute="bottom" constant="20" id="DJ1-yx-Mrr"/>
                             <constraint firstItem="PIA-Ou-3Z0" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="-20" id="FIX-Lq-p1x"/>
                             <constraint firstItem="8hp-fv-chz" firstAttribute="leading" secondItem="KeE-OP-7pn" secondAttribute="leading" id="GrQ-rc-65P"/>
                             <constraint firstItem="KeE-OP-7pn" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="Q0v-u1-MSk"/>
+                            <constraint firstItem="fQ6-I5-sja" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="27" id="VD0-am-jy2"/>
                             <constraint firstItem="8hp-fv-chz" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="d7V-7q-Hft"/>
                             <constraint firstItem="KeE-OP-7pn" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="d7a-L8-BUw"/>
                             <constraint firstItem="PIA-Ou-3Z0" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="ddM-JA-oqT"/>
                             <constraint firstItem="8hp-fv-chz" firstAttribute="trailing" secondItem="KeE-OP-7pn" secondAttribute="trailing" id="iFx-Zp-wot"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="fQ6-I5-sja" secondAttribute="trailing" constant="27" id="o9O-W8-Ksl"/>
                             <constraint firstItem="KeE-OP-7pn" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" id="rGV-9t-RKx"/>
                             <constraint firstItem="xDv-MR-VEU" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" constant="100" id="vMa-wA-PSb"/>
                             <constraint firstItem="xDv-MR-VEU" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="zbk-OO-We9"/>
@@ -209,14 +232,16 @@
                                     </label>
                                 </subviews>
                             </stackView>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="g07-mL-jFL">
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="g07-mL-jFL">
                                 <rect key="frame" x="16" y="619" width="343" height="29"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <segments>
                                     <segment title="Ball&amp;Stick"/>
                                     <segment title="Squares"/>
                                 </segments>
                                 <color key="tintColor" red="0.0" green="0.65925977329999996" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <connections>
+                                    <action selector="segmentValueChanged:" destination="D8m-8j-HXm" eventType="valueChanged" id="JLr-zn-tmn"/>
+                                </connections>
                             </segmentedControl>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="7Ib-9R-q9K">
                                 <rect key="frame" x="16" y="80" width="120" height="23"/>
@@ -239,7 +264,10 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="Rqy-23-PVZ" firstAttribute="width" secondItem="4xy-Uf-ZzO" secondAttribute="width" id="741-tS-MMf"/>
+                            <constraint firstItem="g07-mL-jFL" firstAttribute="leading" secondItem="vR6-l5-K3C" secondAttribute="leading" constant="16" id="7eF-s0-rgq"/>
+                            <constraint firstItem="vR6-l5-K3C" firstAttribute="bottom" secondItem="g07-mL-jFL" secondAttribute="bottom" constant="20" id="GCe-4K-ejv"/>
                             <constraint firstItem="7Ib-9R-q9K" firstAttribute="top" secondItem="vR6-l5-K3C" secondAttribute="top" constant="16" id="L2F-mR-oKF"/>
+                            <constraint firstItem="vR6-l5-K3C" firstAttribute="trailing" secondItem="g07-mL-jFL" secondAttribute="trailing" constant="16" id="Xtc-uF-rHs"/>
                             <constraint firstItem="Rqy-23-PVZ" firstAttribute="height" secondItem="4xy-Uf-ZzO" secondAttribute="height" id="YMK-Zw-rFl"/>
                             <constraint firstItem="Rqy-23-PVZ" firstAttribute="centerY" secondItem="vR6-l5-K3C" secondAttribute="centerY" id="b7O-jC-QhJ"/>
                             <constraint firstItem="Rqy-23-PVZ" firstAttribute="centerX" secondItem="vR6-l5-K3C" secondAttribute="centerX" id="eun-hW-GBA"/>
@@ -281,7 +309,9 @@
     <resources>
         <image name="backgroundProteins" width="1500" height="1000"/>
         <image name="fingerprint" width="76" height="76"/>
+        <image name="password" width="41" height="41"/>
         <image name="proteinsIcon" width="1600" height="1000"/>
+        <image name="username" width="32" height="32"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="oGt-s9-LFM"/>
