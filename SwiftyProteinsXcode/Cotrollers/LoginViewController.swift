@@ -8,6 +8,7 @@
 
 import UIKit
 import LocalAuthentication
+import SVProgressHUD
 
 class LoginViewController: UIViewController {
     
@@ -66,6 +67,11 @@ class LoginViewController: UIViewController {
             warningLbl.text = "Empty Username field!"
         } else {
             warningLbl.isHidden = true
+            
+            SVProgressHUD.setDefaultStyle(SVProgressHUDStyle.dark)
+            SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black)
+            SVProgressHUD.show()
+            
             print("Looking for: [\(loginField.text!)] user")
             if let token = self.request.token {
                 self.request.getUser(by: token, with: loginField.text!, completion: { (response, error) in
@@ -76,12 +82,16 @@ class LoginViewController: UIViewController {
                         if !response.isEmpty {
                             self.file.readFrom()
                             DispatchQueue.main.async {
+//                                UIApplication.shared.isNetworkActivityIndicatorVisible = false
+                                SVProgressHUD.dismiss()
                                 self.loginField.text = ""
                                 self.passwordField.text = ""
                                 self.performSegue(withIdentifier: "toLigandsTable_2", sender: self)
                             }
                         } else {
                             DispatchQueue.main.async {
+//                                UIApplication.shared.isNetworkActivityIndicatorVisible = false
+                                SVProgressHUD.dismiss()
                               self.displayPopup()
                             }
                         }

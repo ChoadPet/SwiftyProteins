@@ -12,6 +12,7 @@
 		1DABF2C61FE6E38A0064F1A5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1DABF2C41FE6E38A0064F1A5 /* Main.storyboard */; };
 		1DABF2C81FE6E38A0064F1A5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1DABF2C71FE6E38A0064F1A5 /* Assets.xcassets */; };
 		1DABF2CB1FE6E38A0064F1A5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1DABF2C91FE6E38A0064F1A5 /* LaunchScreen.storyboard */; };
+		292B7CF3200A40AB009D0A5A /* SVProgressHUD.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 292B7CF4200A40AB009D0A5A /* SVProgressHUD.framework */; };
 		295308792000DCE900FEE036 /* Atom3DModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295308782000DCE900FEE036 /* Atom3DModel.swift */; };
 		295B05A32007B8FF00629B30 /* DesignableTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295B05A22007B8FF00629B30 /* DesignableTextField.swift */; };
 		2988B1E51FF12512003F73BB /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2988B1E41FF12512003F73BB /* Request.swift */; };
@@ -35,6 +36,7 @@
 		1DABF2C71FE6E38A0064F1A5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1DABF2CA1FE6E38A0064F1A5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1DABF2CC1FE6E38A0064F1A5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		292B7CF4200A40AB009D0A5A /* SVProgressHUD.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SVProgressHUD.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		295308782000DCE900FEE036 /* Atom3DModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Atom3DModel.swift; sourceTree = "<group>"; };
 		295B05A22007B8FF00629B30 /* DesignableTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignableTextField.swift; sourceTree = "<group>"; };
 		2988B1E41FF12512003F73BB /* Request.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
@@ -56,6 +58,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				292B7CF3200A40AB009D0A5A /* SVProgressHUD.framework in Frameworks */,
 				2988B1FB1FF3B1E8003F73BB /* Alamofire.framework in Frameworks */,
 				3A81831F004A0B4B1FE3D593 /* Pods_SwiftyProteinsXcode.framework in Frameworks */,
 			);
@@ -133,6 +136,7 @@
 		F07F3EECA88DAF52F11C92BB /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				292B7CF4200A40AB009D0A5A /* SVProgressHUD.framework */,
 				2988B1FC1FF3B1E8003F73BB /* Alamofire.framework */,
 				2988B1F71FF3B046003F73BB /* Alamofire.framework */,
 				749B291A39081B3ABDFFC313 /* Pods_SwiftyProteinsXcode.framework */,
@@ -252,10 +256,12 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-SwiftyProteinsXcode/Pods-SwiftyProteinsXcode-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVProgressHUD.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;

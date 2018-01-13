@@ -49,19 +49,19 @@ class ProteinViewController: UIViewController {
     
     // MARK: - functions
     
-    // We are willing to become first responder to get shake motion
-    override var canBecomeFirstResponder: Bool {
-        get {
-            return true
-        }
-    }
-    
-    // Enable detection of shake motion
-    override func motionEnded(_ motion: UIEventSubtype, with event: UIEvent?) {
-        if motion == .motionShake {
-            print("Why are you shaking me?")
-        }
-    }
+//    // We are willing to become first responder to get shake motion
+//    override var canBecomeFirstResponder: Bool {
+//        get {
+//            return true
+//        }
+//    }
+//
+//    // Enable detection of shake motion
+//    override func motionEnded(_ motion: UIEventSubtype, with event: UIEvent?) {
+//        if motion == .motionShake {
+//            print("Why are you shaking me?")
+//        }
+//    }
     
     func connectionAlgorithm() {
         for arrayConect in ligandModel.connections {

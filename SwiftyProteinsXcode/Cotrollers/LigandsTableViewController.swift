@@ -8,6 +8,7 @@
 
 import UIKit
 import Alamofire
+import SVProgressHUD
 
 class LigandsTableViewController: UITableViewController, UISearchBarDelegate {
     
@@ -73,15 +74,17 @@ class LigandsTableViewController: UITableViewController, UISearchBarDelegate {
         let name = filteredLigands[indexPath.row]
         
         ligand.name = name
-        UIApplication.shared.isNetworkActivityIndicatorVisible = true
+        SVProgressHUD.setDefaultStyle(SVProgressHUDStyle.dark)
+        SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black)
+        SVProgressHUD.show()
         request.downloadLigandPDB(withName: name) { (data, error) in
             if error {
-                UIApplication.shared.isNetworkActivityIndicatorVisible = false
+                SVProgressHUD.dismiss()
                 self.displayPopup()
             } else {
                 self.ligand.PDBInfo = data
                 DispatchQueue.main.async {
-                    UIApplication.shared.isNetworkActivityIndicatorVisible = false
+                SVProgressHUD.dismiss()
                     self.performSegue(withIdentifier: "toProteinViewController", sender: self)
                 }
             }

@@ -3,5 +3,7 @@ platform :ios, '10.0'
 use_frameworks!
 
 target 'SwiftyProteinsXcode' do
+       
     pod 'Alamofire', '~> 4.5'
+    pod 'SVProgressHUD', :git => 'https://github.com/SVProgressHUD/SVProgressHUD.git'
 end

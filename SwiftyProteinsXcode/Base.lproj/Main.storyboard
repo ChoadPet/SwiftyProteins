@@ -236,7 +236,7 @@
                                 <rect key="frame" x="16" y="619" width="343" height="29"/>
                                 <segments>
                                     <segment title="Ball&amp;Stick"/>
-                                    <segment title="Squares"/>
+                                    <segment title="Squares&amp;Stick"/>
                                 </segments>
                                 <color key="tintColor" red="0.0" green="0.65925977329999996" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
