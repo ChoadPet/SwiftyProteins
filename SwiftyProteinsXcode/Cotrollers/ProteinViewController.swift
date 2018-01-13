@@ -29,6 +29,9 @@ class ProteinViewController: UIViewController {
         super.viewDidLoad()
         self.becomeFirstResponder() // To get shake gesture
         
+        let shareButton = UIBarButtonItem(title: "Share", style: .plain, target: self, action: #selector(ProteinViewController.didTapedButton(sender:)))
+        self.navigationItem.rightBarButtonItem = shareButton
+        
         nameLbl.text = ligandModel.name
         
         //Parse and set array of atoms
@@ -47,25 +50,25 @@ class ProteinViewController: UIViewController {
         sceneView.scene?.rootNode.addChildNode(connectionNodes)
     }
     
-    // MARK: - functions
-    
-//    // We are willing to become first responder to get shake motion
-//    override var canBecomeFirstResponder: Bool {
-//        get {
-//            return true
-//        }
-//    }
-//
-//    // Enable detection of shake motion
-//    override func motionEnded(_ motion: UIEventSubtype, with event: UIEvent?) {
-//        if motion == .motionShake {
-//            print("Why are you shaking me?")
-//        }
-//    }
+    @objc func didTapedButton(sender: UIButton) {
+        
+        // Screenshot:
+        UIGraphicsBeginImageContextWithOptions(self.sceneView.frame.size, true, 0.0)
+        self.sceneView.drawHierarchy(in: self.sceneView.frame, afterScreenUpdates: false)
+        let img = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        
+        if let img = img {
+            let objectsToShare = [img] as [UIImage]
+            let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
+            activityVC.excludedActivityTypes = [UIActivityType.airDrop, UIActivityType.addToReadingList]
+            self.present(activityVC, animated: true, completion: nil)
+        }
+    }
     
     func connectionAlgorithm() {
         for arrayConect in ligandModel.connections {
-            print(arrayConect)
+//             print(arrayConect)
             for atom in ligandModel.atoms {
                 if atom.id == arrayConect[0] {
                     let firstAtom = atom
@@ -142,6 +145,34 @@ class ProteinViewController: UIViewController {
     
 }
 
+//extension UIApplication {
+//
+//    class var topViewController: UIViewController? {
+//        return getTopViewController()
+//    }
+//
+//    private class func getTopViewController(base: UIViewController? = UIApplication.shared.keyWindow?.rootViewController) -> UIViewController? {
+//        if let nav = base as? UINavigationController {
+//            return getTopViewController(base: nav.visibleViewController)
+//        }
+//        if let tab = base as? UITabBarController {
+//            if let selected = tab.selectedViewController {
+//                return getTopViewController(base: selected)
+//            }
+//        }
+//        if let presented = base?.presentedViewController {
+//            return getTopViewController(base: presented)
+//        }
+//        return base
+//    }
+//}
+//
+//extension Equatable {
+//    func share() {
+//        let activity = UIActivityViewController(activityItems: [self], applicationActivities: nil)
+//        UIApplication.topViewController?.present(activity, animated: true, completion: nil)
+//    }
+//}
 
 
 

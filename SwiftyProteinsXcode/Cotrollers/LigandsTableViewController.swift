@@ -27,24 +27,24 @@ class LigandsTableViewController: UITableViewController, UISearchBarDelegate {
         filteredLigands = ligands
     }
     
-    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let view = UIView()
-        
-        view.backgroundColor = UIColor(red:0.87, green:0.98, blue:0.80, alpha:1.0)
-        let imageView = UIImageView(image: #imageLiteral(resourceName: "molecul"))
-        imageView.frame = CGRect(x: 5, y: 5, width: 35, height: 35)
-        view.addSubview(imageView)
-        let label = UILabel()
-        label.text = "Ligands"
-        label.frame = CGRect(x: 45, y: 5, width: 200, height: 35)
-        view.addSubview(label)
-        
-        return view
-    }
-    
-    override    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 45
-    }
+//    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+//        let view = UIView()
+//        
+//        view.backgroundColor = UIColor(red:0.56, green:0.78, blue:0.87, alpha:1.0)
+//        let imageView = UIImageView(image: #imageLiteral(resourceName: "molecul"))
+//        imageView.frame = CGRect(x: 5, y: 5, width: 35, height: 35)
+//        view.addSubview(imageView)
+//        let label = UILabel()
+//        label.text = "Ligands"
+//        label.frame = CGRect(x: 45, y: 5, width: 200, height: 35)
+//        view.addSubview(label)
+//        
+//        return view
+//    }
+//    
+//    override    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+//        return 45
+//    }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
